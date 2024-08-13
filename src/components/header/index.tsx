@@ -9,7 +9,7 @@ export function Header () {
             <BoxLogo>
                 <img src={Logo} alt='Logo'/>
                 <Title>CoreNotes</Title>
-            <SearchBar placeholder='Pesquisar notas'/>
+                <SearchBar placeholder='Pesquisar notas'/>
             </BoxLogo>
         </Container>
     )

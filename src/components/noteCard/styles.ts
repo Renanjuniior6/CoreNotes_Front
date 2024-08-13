@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { theme } from '../../styles/theme'
 
-export const Container = styled.div`
-background-color: ${theme.colors.white};
+export const Container = styled.form`
+background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};
 margin: 40px auto 0 auto;
 display: flex;
 flex-direction: column;
@@ -19,10 +19,9 @@ span {
 `
 
 export const TitleInput = styled.input`
-background-color: ${theme.colors.white};
+background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};;
 width: 90%;
 border: none;
-border-top-right-radius: 25px;
 border-top-left-radius: 25px;
 padding: 10px 20px;
 font-weight: 700;
@@ -37,11 +36,11 @@ font-size: 14px;
 `
 
 export const TextNote = styled.textarea`
-background-color: ${theme.colors.white};
+background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};;
 width: 100%;
 height: 90%;
 border: none;
-border-top: 1px solid ${theme.colors.light};
+border-top: 1px solid ${theme.colors.white};
 padding: 10px 20px;
 font-size: 13px;
 font-weight: 400;

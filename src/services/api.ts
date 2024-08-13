@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { Task, CreateTask } from './api-types'
+import { Task, CreateTask, UpdateTask, DeleteTask } from './api-types'
 
 export class APIService {
     private static client = axios.create({
@@ -21,4 +21,20 @@ export class APIService {
 
         return data
     }
+
+    static async updateTask(updateTaskData: UpdateTask): Promise<void> {
+        await APIService.client.put<UpdateTask>(
+            "/tasks", 
+            updateTaskData,
+        )
+        return
+    }
+
+    static async deleteTask(_id: DeleteTask): Promise<void> {
+        await APIService.client.delete<DeleteTask>(
+            "/tasks", _id
+        )
+        console.log(_id)
+        return
+    }   
 }

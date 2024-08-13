@@ -23,7 +23,7 @@ h1, h2, p, span, strong, button, label, input {
     line-height: 100%;
 }
 
-button, svg {
+button, svg, li {
     cursor: pointer;
 }
 
