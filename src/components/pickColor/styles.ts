@@ -6,10 +6,12 @@ background-color: ${theme.colors.white};
 width: 574px;
 height: 46px;
 position: absolute;
-left: 39%;
+left: 10%;
+top: 100%;
 box-shadow: 1px 1px 3px 0px #00000040;
 border-radius: 9px;
 padding: 5px;
+z-index: 999;
 `
 
 export const ColorContent = styled.ul`

@@ -30,11 +30,11 @@ export class APIService {
         return
     }
 
-    static async deleteTask(_id: DeleteTask): Promise<void> {
-        await APIService.client.delete<DeleteTask>(
-            "/tasks", _id
+    static async deleteTask(deleteTaskData: DeleteTask): Promise<void> {
+        await APIService.client.delete<UpdateTask>(
+            "/tasks", 
+            {data: deleteTaskData}
         )
-        console.log(_id)
         return
-    }   
+    }
 }

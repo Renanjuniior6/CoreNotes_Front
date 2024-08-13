@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react'
-import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons } from "./styles";
+import { useCallback, useEffect, useState } from 'react'
+import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content } from "./styles";
 import { PickColor } from '../pickColor'
 import { PencilSimple, PaintBucket, X, Star } from '@phosphor-icons/react'
 import { TasksProps } from '../../screen/home';
@@ -10,10 +10,12 @@ import { UpdateTaskData } from '../../validators/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { APIService } from '../../services/api'
 
-export function NoteCard ({note}: TasksProps) {
+export function NoteCard ({ note }: TasksProps) {
     const [ modal, setModal ] = useState(false)
-    const [ favorite, setFavorite ] = useState<string | undefined>()
+    const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
+    const [ favorite, setFavorite ] = useState<boolean>()
     const [ edit, setEdit ] = useState<boolean>(true)
+    const [ selectedColor, setSelectedColor ] = useState()
 
     const {
         register,
@@ -21,54 +23,73 @@ export function NoteCard ({note}: TasksProps) {
         formState: { errors },
     } = useForm<UpdateTaskData>({
         defaultValues: {
-            title: "",
-            color: theme.colors.elipse5,
+            title: note.title,
+            color: theme.colors.white,
             favorite: false,
-            text: ""
+            text: note.text
         }, resolver: zodResolver(updateTaskSchema)
     })
 
     function isActive(fill: string) {
 
-        if (fill === favorite) {
-            setFavorite("regular")
+        if (fill === fillFavorite) {
+            setFillFavorite("regular")
+            setFavorite(false)
         } else {
-            setFavorite(fill)
+            setFillFavorite(fill)
+            setFavorite(true)
         }
       }
 
       const _id = note._id
 
-      const onSubmit = useCallback( async (data: UpdateTaskData) => {
+      const updateNote = useCallback( async (data: UpdateTaskData) => {
+
+        const color = selectedColor
+
+          data.color = color
+
+        const favorited = favorite
+
+          data.favorite = favorited
+
             await APIService.updateTask({...data, _id})
-            console.log({...data, _id})
-      }, []) 
+            console.log(data)
+
+            // location.reload()
+
+      }, [selectedColor,_id, favorite]) 
 
       const deleteNote = async () => {
-        await APIService.deleteTask({_id: _id})
-        console.log({_id: _id})
+        await APIService.deleteTask({_id})
       }
 
+      useEffect(() => {
+       
+        setFavorite(note.favorite)
+      }, [])
+      
+
+      console.log(favorite)
+
     return (
-        <>
-        <Container onSubmit={handleSubmit(onSubmit)} color={note.color}>
+    <Content>
+        <Container onSubmit={handleSubmit(updateNote)} color={note.color}>
             <span>
                 <TitleInput
                 {...register("title")}
                 placeholder="Título" 
                 disabled={edit} 
-                color={note.color} 
-                defaultValue={note.title}>
+                color={note.color}>
                 </TitleInput>
-                <Star size={20} weight={favorite} onClick={() => isActive("fill") } />
+                <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill") } />
             </span>
             <BottomBox>
                 <TextNote 
                 {...register("text")} 
                 placeholder="Anotação..." 
                 disabled={edit} 
-                color={note.color} 
-                defaultValue={note.text}>
+                color={note.color}>
                 </TextNote>
                 <ContainerIcons>
                     <IconsBox>
@@ -80,7 +101,7 @@ export function NoteCard ({note}: TasksProps) {
             </BottomBox>
             <button type='submit'>Salvar</button>
         </Container>
-        { modal && <PickColor setModal={setModal} /> }
-        </>
+        { modal && <PickColor setSelectedColor={setSelectedColor} setModal={setModal} /> }
+    </Content>
     )
 }

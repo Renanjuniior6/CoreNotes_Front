@@ -7,8 +7,11 @@ import { createTaskSchema } from "../../validators/schemas";
 import { useCallback } from "react";
 import { APIService } from "../../services/api";
 import { theme } from '../../styles/theme'
+import { useState } from 'react'
 
 export function CreateNoteCard() {
+    const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
+    const [ favorite, setFavorite ] = useState<boolean>()
 
     const {
         register,
@@ -29,16 +32,31 @@ export function CreateNoteCard() {
     //     }
     // }
 
+    function isActive(fill: string) {
+
+        if (fill === fillFavorite) {
+            setFillFavorite("regular")
+            setFavorite(false)
+        } else {
+            setFillFavorite(fill)
+            setFavorite(true)
+        }
+      }
+
     const onSubmit = useCallback( async (data: CreateTaskData) => {
-    //   await APIService.createTask(data)
-        console.log(data)
-    },[])
+        const favorited = favorite
+
+        data.favorite = favorited
+
+      await APIService.createTask(data)
+    
+    },[favorite])
    
     return (
         <Container onSubmit={handleSubmit(onSubmit)}>
             <span>
                 <TitleInput placeholder="Título" {...register("title")} />
-                <Star size={20} />
+                <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill")} />
             </span>
                 <TextNote 
                 placeholder="Criar nota..." 

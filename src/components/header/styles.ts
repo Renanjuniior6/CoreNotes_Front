@@ -9,6 +9,7 @@ width: 100%;
 position: fixed;
 top: 0;
 box-shadow: 0px 1px 7px 0px #95959540;
+z-index: 9999;
 `
 export const BoxLogo = styled.span`
 display: flex;

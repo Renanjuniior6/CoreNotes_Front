@@ -3,7 +3,6 @@ import { theme } from '../../styles/theme'
 
 export const Container = styled.form`
 background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};
-margin: 40px auto 0 auto;
 display: flex;
 flex-direction: column;
 border: 1px solid ${theme.colors.light};
@@ -16,6 +15,11 @@ span {
     display: flex;
     align-items: center;
 }
+`
+
+export const Content = styled.div`
+position: relative;
+margin: 40px auto 0 auto;
 `
 
 export const TitleInput = styled.input`
@@ -36,11 +40,11 @@ font-size: 14px;
 `
 
 export const TextNote = styled.textarea`
-background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};;
+background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};
 width: 100%;
 height: 90%;
 border: none;
-border-top: 1px solid ${theme.colors.white};
+border-top: 1px solid ${(props) => props.color === "#FFFFFF"? `${theme.colors.light}` : `${theme.colors.white}`};
 padding: 10px 20px;
 font-size: 13px;
 font-weight: 400;
