@@ -1,4 +1,4 @@
-import { Container, ColorContent, Color } from "./styles";
+import { Container, ColorContent, Color, CloseButton } from "./styles";
 import { colors } from "../../styles/theme";
 
 
@@ -17,6 +17,7 @@ export function PickColor ({setSelectedColor,  setModal }) {
                />
               ))}
             </ColorContent>
+            <CloseButton size={18} onClick={() => setModal(false)}/>
         </Container>
     )
 }

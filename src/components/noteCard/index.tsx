@@ -54,7 +54,6 @@ export function NoteCard ({ note }: TasksProps) {
           data.favorite = favorited
 
             await APIService.updateTask({...data, _id})
-            console.log(data)
 
             // location.reload()
 
@@ -69,8 +68,6 @@ export function NoteCard ({ note }: TasksProps) {
         setFavorite(note.favorite)
       }, [])
       
-
-      console.log(favorite)
 
     return (
     <Content>
