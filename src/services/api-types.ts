@@ -9,7 +9,7 @@ export type Task = {
 export type CreateTask = {
     title: string 
     color: string
-    favorite: boolean
+    favorite?: boolean
     text: string
 }
 

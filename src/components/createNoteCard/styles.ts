@@ -9,7 +9,7 @@ flex-direction: column;
 border: 1px solid ${theme.colors.light};
 border-radius: 3px;
 width: 530px;
-height: 103px;
+height: 135px;
 box-shadow: 1px 1px 3px 0px #00000040;
 
 span {
@@ -39,7 +39,7 @@ font-size: 14px;
 export const TextNote = styled.textarea`
 background-color: ${theme.colors.white};
 width: 100%;
-height: 100%;
+height: 70%;
 border: none;
 border-top: 1px solid ${theme.colors.light};
 border-bottom-left-radius: 3px;

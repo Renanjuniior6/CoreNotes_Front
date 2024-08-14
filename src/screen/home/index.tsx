@@ -32,7 +32,7 @@ export function Home () {
             setAllTasks(data)
         }
        fetchTasks()
-      }, [])
+      }, [noFavoritedTasks, favoriteTasks])
 
     return (
     <Container>

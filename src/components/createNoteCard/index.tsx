@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import { APIService } from "../../services/api";
 import { theme } from '../../styles/theme'
 import { useState } from 'react'
+import { Button } from "../button";
 
 export function CreateNoteCard() {
     const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
@@ -46,24 +47,27 @@ export function CreateNoteCard() {
     const onSubmit = useCallback( async (data: CreateTaskData) => {
         const favorited = favorite
 
-        data.favorite = favorited
+        if(favorite) {
+            data.favorite = favorited
+        }
 
       await APIService.createTask(data)
+      console.log(data)
     
     },[favorite])
    
     return (
-        <Container onSubmit={handleSubmit(onSubmit)}>
-            <span>
-                <TitleInput placeholder="Título" {...register("title")} />
-                <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill")} />
-            </span>
-                <TextNote 
-                placeholder="Criar nota..." 
-                {...register("text")}
-                >
-                </TextNote>
-                <button type="submit">Criar</button>
-        </Container>
+            <Container onSubmit={handleSubmit(onSubmit)}>
+                <span>
+                    <TitleInput placeholder="Título" {...register("title")} />
+                    <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill")} />
+                </span>
+                    <TextNote 
+                    placeholder="Criar nota..." 
+                    {...register("text")}
+                    >
+                    </TextNote>
+                    <Button width="true" type="submit">Criar</Button>
+            </Container>
     )
 }

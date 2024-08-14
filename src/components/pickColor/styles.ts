@@ -29,6 +29,11 @@ height: 36px;
 border-radius: 50px;
 background-color: ${(props) => props.color ? `${props.color}` : '#000'};
 list-style: none;
+
+&:hover {
+    transform: translateY(-5px);
+    transition: ease-in-out 200ms;
+}
 `
 
 export const CloseButton = styled(X)`
