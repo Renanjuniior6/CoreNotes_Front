@@ -9,6 +9,7 @@ import { updateTaskSchema } from '../../validators/schemas';
 import { UpdateTaskData } from '../../validators/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { APIService } from '../../services/api'
+import { Button } from '../button';
 
 export function NoteCard ({ note }: TasksProps) {
     const [ modal, setModal ] = useState(false)
@@ -30,7 +31,7 @@ export function NoteCard ({ note }: TasksProps) {
         }, resolver: zodResolver(updateTaskSchema)
     })
 
-    function isActive(fill: string) {
+    function isActive (fill: string) {
 
         if (fill === fillFavorite) {
             setFillFavorite("regular")
@@ -38,6 +39,15 @@ export function NoteCard ({ note }: TasksProps) {
         } else {
             setFillFavorite(fill)
             setFavorite(true)
+        }
+      }
+
+      function isEditing (edited: boolean) {
+
+        if (edited === edit) {
+            setEdit(true)
+        } else {
+            setEdit(false)
         }
       }
 
@@ -90,13 +100,14 @@ export function NoteCard ({ note }: TasksProps) {
                 </TextNote>
                 <ContainerIcons>
                     <IconsBox>
-                        <PencilSimple size={20} onClick={() => setEdit(false)} />
+                        <PencilSimple size={20} onClick={() => isEditing(false)} />
                         <PaintBucket size={20} onClick={() => setModal(true)} />
                     </IconsBox>
                     <X size={20} onClick={deleteNote}/>
                 </ContainerIcons>
             </BottomBox>
-            <button type='submit'>Salvar</button>
+            { edit === false && <Button type='submit'>Salvar</Button>}
+            { modal === true && <Button type='submit'>Salvar</Button>}
         </Container>
         { modal && <PickColor setSelectedColor={setSelectedColor} setModal={setModal} /> }
     </Content>
