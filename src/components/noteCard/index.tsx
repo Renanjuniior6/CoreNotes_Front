@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content } from "./styles";
+import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content, Bucket, Pencil, CircleEdit, CircleBucket } from "./styles";
 import { PickColor } from '../pickColor'
 import { PencilSimple, PaintBucket, X, Star } from '@phosphor-icons/react'
 import { TasksProps } from '../../screen/home';
@@ -60,6 +60,19 @@ export function NoteCard ({ note }: TasksProps) {
         }
       }
 
+      function isOpen (fill: boolean) {
+
+        if (fill === modal) {
+
+            setModal(false)
+
+            
+        } else {
+            setModal(true)
+
+        }
+      }
+
       const updateNote = useCallback( (data: UpdateTaskData) => {
 
             data.favorite = favorited
@@ -99,8 +112,12 @@ export function NoteCard ({ note }: TasksProps) {
                 </TextNote>
                 <ContainerIcons>
                     <IconsBox>
-                        <PencilSimple size={20} onClick={() => isEditing(false)} />
-                        <PaintBucket size={20} onClick={() => setModal(true)} />
+                        <CircleEdit edit={edit}>
+                            <PencilSimple size={20} onClick={() => isEditing(false)} />
+                        </CircleEdit>
+                        <CircleBucket modal={modal}>
+                            <PaintBucket size={20} onClick={() => isOpen(true)} />
+                        </CircleBucket>
                     </IconsBox>
                     <X size={20} onClick={deleteNote}/>
                 </ContainerIcons>

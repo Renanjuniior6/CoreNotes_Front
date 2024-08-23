@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { theme } from '../../styles/theme'
-import { X } from '@phosphor-icons/react'
 
 export const Container = styled.div`
 background-color: ${theme.colors.white};
@@ -34,14 +33,4 @@ list-style: none;
     transform: translateY(-5px);
     transition: ease-in-out 200ms;
 }
-`
-
-export const CloseButton = styled(X)`
-background-color: ${theme.colors.white};
-border-radius: 50px;
-position: absolute;
-left: 98%;
-top: -10%;
-box-shadow: 1px 1px 3px 0px #00000040;
-padding: 2px;
 `

@@ -1,4 +1,4 @@
-import { Container, ColorContent, Color, CloseButton } from "./styles";
+import { Container, ColorContent, Color } from "./styles";
 import { colors } from "../../styles/theme";
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
@@ -32,7 +32,6 @@ export function PickColor ({ _id, setModal}) {
                />
               ))}
             </ColorContent>
-            <CloseButton size={18} onClick={() => setModal(false)}/>
         </Container>
     )
 }

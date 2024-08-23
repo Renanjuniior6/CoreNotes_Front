@@ -1,3 +1,4 @@
+import { PencilSimple, PaintBucket } from '@phosphor-icons/react'
 import styled from "styled-components";
 import { theme } from '../../styles/theme'
 
@@ -73,4 +74,35 @@ display: flex;
 justify-content: space-evenly;
 gap: 245px;
 align-items: center;
+`
+
+export const CircleEdit = styled.div`
+width: 30px;
+height: 30px;
+padding: 5px;
+
+background-color: ${(props) => props.edit ? "none" : theme.colors.elipse13};
+opacity: ${(props) => props.edit ? "none" : "0.8"};
+border-radius: ${(props) => props.edit ? "none" : "20px"};
+
+&:hover {
+    background-color: ${theme.colors.elipse13};
+    opacity: 0.8;
+    border-radius: 20px;
+}
+`
+export const CircleBucket = styled.div`
+width: 30px;
+height: 30px;
+padding: 5px;
+
+background-color: ${(props) => props.modal ? theme.colors.elipse13 : "none"};
+opacity: ${(props) => props.modal ? "0.8" : "none"};
+border-radius: ${(props) => props.modal ? "20px" : "none"};
+
+&:hover {
+    background-color: ${theme.colors.elipse13};
+    opacity: 0.8;
+    border-radius: 20px;
+}
 `

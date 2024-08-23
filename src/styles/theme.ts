@@ -17,6 +17,7 @@ export const theme =
         elipse10: "#CDCDCD",
         elipse11: "#979797",
         elipse12: "#A99A7C",
+        elipse13: "#FFE3B3"
     }
 }
 
