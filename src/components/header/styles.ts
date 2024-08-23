@@ -23,6 +23,7 @@ export const Title = styled.h3`
 font-size: 14px;
 color: ${theme.colors.gray};
 font-weight: 400;
+cursor: pointer;
 `
 
 export const SearchBar = styled.input`

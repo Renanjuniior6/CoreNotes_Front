@@ -1,8 +1,23 @@
 import { Container, ColorContent, Color, CloseButton } from "./styles";
 import { colors } from "../../styles/theme";
 
+import { useFetchAPI } from '../../hooks/useFetchAPI'
 
-export function PickColor ({setSelectedColor,  setModal }) {
+
+export function PickColor ({ _id, setModal}) {
+
+    const { updateTask } = useFetchAPI()
+
+      function selectedColor (color: string) {
+
+        const data = {color, _id}
+
+        updateTask(data)
+        
+        setModal(false)
+      }
+ 
+
 
     return (
         <Container>
@@ -12,7 +27,7 @@ export function PickColor ({setSelectedColor,  setModal }) {
                 key={item.id} 
                 color={item.color} 
                 onClick={() => {
-                    setSelectedColor(item.color)
+                    selectedColor(item.color)
                 }}
                />
               ))}

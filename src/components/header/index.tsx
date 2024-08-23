@@ -3,24 +3,27 @@ import Logo from '../../assets/logo.png'
 import { useState } from 'react'
 import { MagnifyingGlass } from '@phosphor-icons/react'
 
-export function Header ({ tasks, setTasks }) {
+import { useFetchAPI } from '../../hooks/useFetchAPI'
+
+export function Header ({ setFilteredTask }) {
     const [ inputValue, setInputValue ] = useState<string>()
 
+    const { tasks } = useFetchAPI()
+
   
-         function fetchTasks () {
+    function fetchTasks () {
 
-            const findNote = tasks.filter((item) => item.title.toLowerCase() === inputValue?.toLowerCase())
+        const findNote = tasks.filter((item) => item.title.toLowerCase() === inputValue?.toLowerCase())
 
-            console.log(findNote)
-            setTasks(findNote)
+        setFilteredTask(findNote)
 
-        }
+    }
 
     return (
         <Container>
             <BoxLogo>
-                <img src={Logo} alt='Logo'/>
-                <Title>CoreNotes</Title>
+                <img src={Logo} alt='Logo' />
+                <Title onClick={() => setFilteredTask([])}>CoreNotes</Title>
                 <SearchBar onChange={(value) => setInputValue(value.target.value)} placeholder='Pesquisar nota' />
                 <MagnifyingGlass size={20} onClick={fetchTasks} />
             </BoxLogo>

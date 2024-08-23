@@ -8,20 +8,22 @@ import { theme } from '../../styles/theme'
 import { updateTaskSchema } from '../../validators/schemas';
 import { UpdateTaskData } from '../../validators/types';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { APIService } from '../../services/api'
 import { Button } from '../button';
+
+import { useFetchAPI } from '../../hooks/useFetchAPI'
 
 export function NoteCard ({ note }: TasksProps) {
     const [ modal, setModal ] = useState(false)
-    const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
-    const [ favorite, setFavorite ] = useState<boolean>()
+    const [ favorited, setFavorited ] = useState<boolean>()
     const [ edit, setEdit ] = useState<boolean>(true)
-    const [ selectedColor, setSelectedColor ] = useState()
+
+    const _id = note._id
+
+    const { updateTask, deleteTask } = useFetchAPI()
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
     } = useForm<UpdateTaskData>({
         defaultValues: {
             title: note.title,
@@ -31,14 +33,21 @@ export function NoteCard ({ note }: TasksProps) {
         }, resolver: zodResolver(updateTaskSchema)
     })
 
-    function isActive (fill: string) {
+     function isActive (fill: boolean) {
 
-        if (fill === fillFavorite) {
-            setFillFavorite("regular")
-            setFavorite(false)
+        if (fill === favorited) {
+
+            setFavorited(false)
+
+            const favorite = false
+            
+            updateTask({favorite, _id})
         } else {
-            setFillFavorite(fill)
-            setFavorite(true)
+            setFavorited(true)
+
+            const favorite = true
+
+            updateTask({favorite, _id})
         }
       }
 
@@ -51,32 +60,22 @@ export function NoteCard ({ note }: TasksProps) {
         }
       }
 
-      const _id = note._id
+      const updateNote = useCallback( (data: UpdateTaskData) => {
 
-      const updateNote = useCallback( async (data: UpdateTaskData) => {
+            data.favorite = favorited
 
-        const color = selectedColor
+           updateTask({...data, _id})
 
-          data.color = color
-
-        const favorited = favorite
-
-          data.favorite = favorited
-
-            await APIService.updateTask({...data, _id})
-
-            // location.reload()
-
-      }, [selectedColor,_id, favorite]) 
+      }, [_id, updateTask, favorited]) 
 
       const deleteNote = async () => {
-        await APIService.deleteTask({_id})
+        deleteTask({_id})
       }
 
       useEffect(() => {
        
-        setFavorite(note.favorite)
-      }, [])
+        setFavorited(note.favorite)
+      }, [note.favorite, setFavorited])
       
 
     return (
@@ -89,7 +88,7 @@ export function NoteCard ({ note }: TasksProps) {
                 disabled={edit} 
                 color={note.color}>
                 </TitleInput>
-                <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill") } />
+                <Star size={20} weight={favorited ? "fill" : "regular"} onClick={() => isActive(true) } />
             </span>
             <BottomBox>
                 <TextNote 
@@ -107,9 +106,8 @@ export function NoteCard ({ note }: TasksProps) {
                 </ContainerIcons>
             </BottomBox>
             { edit === false && <Button type='submit'>Salvar</Button>}
-            { modal === true && <Button type='submit'>Salvar</Button>}
         </Container>
-        { modal && <PickColor setSelectedColor={setSelectedColor} setModal={setModal} /> }
+        { modal && <PickColor _id={_id} setModal={setModal} /> }
     </Content>
     )
 }

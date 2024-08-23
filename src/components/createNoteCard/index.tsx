@@ -5,19 +5,21 @@ import { CreateTaskData } from "../../validators/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createTaskSchema } from "../../validators/schemas";
 import { useCallback } from "react";
-import { APIService } from "../../services/api";
 import { theme } from '../../styles/theme'
 import { useState } from 'react'
 import { Button } from "../button";
 
+import { useFetchAPI } from '../../hooks/useFetchAPI'
+
 export function CreateNoteCard() {
     const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
     const [ favorite, setFavorite ] = useState<boolean>()
+    const { createTask } = useFetchAPI()
 
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        reset,
     } = useForm<CreateTaskData>({
         defaultValues: {
             title: "",
@@ -26,12 +28,6 @@ export function CreateNoteCard() {
             text: ""
         }, resolver: zodResolver(createTaskSchema)
     })
-
-    // const createNote = (event: { key: string; }) => {
-    //     if(event.key === 'Enter') {
-
-    //     }
-    // }
 
     function isActive(fill: string) {
 
@@ -44,17 +40,20 @@ export function CreateNoteCard() {
         }
       }
 
-    const onSubmit = useCallback( async (data: CreateTaskData) => {
-        const favorited = favorite
+    const onSubmit = useCallback((data: CreateTaskData) => {
 
         if(favorite) {
-            data.favorite = favorited
+            data.favorite = favorite
         }
 
-      await APIService.createTask(data)
-      console.log(data)
+       createTask(data)
+
+       reset()
+
+       setFavorite(false)
+
     
-    },[favorite])
+    },[favorite, createTask, reset])
    
     return (
             <Container onSubmit={handleSubmit(onSubmit)}>
