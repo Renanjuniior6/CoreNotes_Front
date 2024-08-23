@@ -2,7 +2,7 @@ import { Header } from '../../components/header'
 import { CreateNoteCard } from '../../components/createNoteCard'
 import { NoteCard } from '../../components/noteCard'
 
-import { Content, Container } from './styles'
+import { Content } from './styles'
 import { useEffect, useState } from 'react'
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
@@ -38,8 +38,8 @@ export function Home () {
 
 
     return (
-    <Container>
-        <Header setFilteredTask={setFilteredTask} />
+    <main>
+      <Header setFilteredTask={setFilteredTask} />
         {filteredTask! && filteredTask?.length === 0 && <CreateNoteCard />}
             <Content>
                 <section>
@@ -49,21 +49,21 @@ export function Home () {
                         ))}
                 </section>
 
-                    <main>
+                    <section>
                     {filteredTask! && filteredTask?.length === 0 &&
                         noFavoritedTasks && noFavoritedTasks.map((item) => (
                               <NoteCard key={item._id} note={item} />
                         ))}
-                    </main>
+                    </section>
 
                    {filteredTask && filteredTask?.map((item) => (
-                    <section style={{marginTop: 81}}>
+                    <section style={{ marginTop: "5.0625rem" }}>
                         <NoteCard key={item._id} note={item} /> 
                     </section>         
                     ))}
               
             </Content>
-    </Container>
+    </main>
     )
    
 }

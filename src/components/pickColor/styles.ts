@@ -3,14 +3,14 @@ import { theme } from '../../styles/theme'
 
 export const Container = styled.div`
 background-color: ${theme.colors.white};
-width: 574px;
-height: 46px;
+width: 35.875rem;
+height: 2.875rem;
 position: absolute;
 left: 10%;
 top: 100%;
 box-shadow: 1px 1px 3px 0px #00000040;
 border-radius: 9px;
-padding: 5px;
+padding: 0.3125rem;
 z-index: 999;
 `
 
@@ -18,13 +18,13 @@ export const ColorContent = styled.ul`
 display: flex;
 align-items: center;
 justify-content: center;
-gap: 10px;
+gap: 0.625rem;
 position: relative;
 `
 
 export const Color = styled.li`
-width: 36px;
-height: 36px;
+width: 2.25rem;
+height: 2.25rem;
 border-radius: 50px;
 background-color: ${(props) => props.color ? `${props.color}` : '#000'};
 list-style: none;

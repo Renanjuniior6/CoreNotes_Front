@@ -1,4 +1,3 @@
-import { PencilSimple, PaintBucket } from '@phosphor-icons/react'
 import styled from "styled-components";
 import { theme } from '../../styles/theme'
 
@@ -8,19 +7,27 @@ display: flex;
 flex-direction: column;
 border: 1px solid ${theme.colors.light};
 border-radius: 25px;
-width: 390px;
-height: 437px;
+width: 24.375rem;
+height: 27.3125rem;
 box-shadow: 1px 1px 3px 0px #00000040;
 
 span {
     display: flex;
     align-items: center;
 }
+
+@media screen and (max-width: 600px) {
+    width: 23rem;
+}
+
+@media screen and (max-width: 400px) {
+    width: 21rem;
+}
 `
 
 export const Content = styled.div`
 position: relative;
-margin: 40px auto 0 auto;
+margin: 2.5rem auto 0 auto;
 `
 
 export const TitleInput = styled.input`
@@ -28,14 +35,14 @@ background-color: ${(props) => props.color ? `${props.color}` : theme.colors.whi
 width: 90%;
 border: none;
 border-top-left-radius: 25px;
-padding: 10px 20px;
+padding: 0.625rem 1.25rem;
 font-weight: 700;
-font-size: 14px;
+font-size: 0.875rem;
 
 
 &&::placeholder {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: #333333;
 }
 `
@@ -43,23 +50,23 @@ font-size: 14px;
 export const TextNote = styled.textarea`
 background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};
 width: 100%;
-height: 90%;
+height: 89%;
 border: none;
 border-top: 1px solid ${(props) => props.color === "#FFFFFF"? `${theme.colors.light}` : `${theme.colors.white}`};
-padding: 10px 20px;
-font-size: 13px;
+padding: 0.625rem 1.25rem;
+font-size: 0.8125rem;
 font-weight: 400;
 resize: none;
 
 &&::placeholder {
-    font-size: 13px;
+    font-size: 0.8125rem;
     font-weight: 400;
 }
 `
 
 export const IconsBox = styled.div`
 display: flex;
-gap: 10px;
+gap: 0.625rem;
 height: 10%;
 border-bottom-left-radius: 25px;
 border-bottom-right-radius: 25px;
@@ -72,37 +79,46 @@ width: 100%;
 export const ContainerIcons = styled.div`
 display: flex;
 justify-content: space-evenly;
-gap: 245px;
+gap: 15.3125rem;
 align-items: center;
+
+@media screen and (max-width: 600px) {
+    gap: 14.3125rem;
+}
+
+@media screen and (max-width: 400px) {
+    gap: 12.3125rem;
+}
+
 `
 
 export const CircleEdit = styled.div`
-width: 30px;
-height: 30px;
-padding: 5px;
+width: 1.875rem;
+height: 1.875rem;
+padding: 0.3125rem;
 
 background-color: ${(props) => props.edit ? "none" : theme.colors.elipse13};
 opacity: ${(props) => props.edit ? "none" : "0.8"};
-border-radius: ${(props) => props.edit ? "none" : "20px"};
+border-radius: ${(props) => props.edit ? "none" : "1.25rem"};
 
 &:hover {
     background-color: ${theme.colors.elipse13};
     opacity: 0.8;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 `
 export const CircleBucket = styled.div`
-width: 30px;
-height: 30px;
-padding: 5px;
+width: 1.875rem;
+height: 1.875rem;
+padding: 0.3125rem;
 
 background-color: ${(props) => props.modal ? theme.colors.elipse13 : "none"};
 opacity: ${(props) => props.modal ? "0.8" : "none"};
-border-radius: ${(props) => props.modal ? "20px" : "none"};
+border-radius: ${(props) => props.modal ? "1.25rem" : "none"};
 
 &:hover {
     background-color: ${theme.colors.elipse13};
     opacity: 0.8;
-    border-radius: 20px;
+    border-radius: 1.25rem;
 }
 `

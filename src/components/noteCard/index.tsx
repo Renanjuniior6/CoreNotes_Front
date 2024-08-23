@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content, Bucket, Pencil, CircleEdit, CircleBucket } from "./styles";
+import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content, CircleEdit, CircleBucket } from "./styles";
 import { PickColor } from '../pickColor'
 import { PencilSimple, PaintBucket, X, Star } from '@phosphor-icons/react'
 import { TasksProps } from '../../screen/home';
 import { useForm } from 'react-hook-form'
-import { theme } from '../../styles/theme'
 import { updateTaskSchema } from '../../validators/schemas';
 import { UpdateTaskData } from '../../validators/types';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -27,8 +26,6 @@ export function NoteCard ({ note }: TasksProps) {
     } = useForm<UpdateTaskData>({
         defaultValues: {
             title: note.title,
-            color: theme.colors.white,
-            favorite: false,
             text: note.text
         }, resolver: zodResolver(updateTaskSchema)
     })
@@ -66,7 +63,6 @@ export function NoteCard ({ note }: TasksProps) {
 
             setModal(false)
 
-            
         } else {
             setModal(true)
 
@@ -78,6 +74,8 @@ export function NoteCard ({ note }: TasksProps) {
             data.favorite = favorited
 
            updateTask({...data, _id})
+
+           setEdit(true)
 
       }, [_id, updateTask, favorited]) 
 

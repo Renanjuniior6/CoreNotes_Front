@@ -8,6 +8,7 @@ import { useCallback } from "react";
 import { theme } from '../../styles/theme'
 import { useState } from 'react'
 import { Button } from "../button";
+import { toast } from 'react-toastify'
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
 
@@ -51,6 +52,8 @@ export function CreateNoteCard() {
        reset()
 
        setFavorite(false)
+
+       toast.success("Nota adicionada!")
 
     
     },[favorite, createTask, reset])
