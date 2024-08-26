@@ -3,8 +3,13 @@ import { colors } from "../../styles/theme";
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
 
+type PickColorProps = {
+  _id: string
+  setModal: (data: boolean) => void
+}
 
-export function PickColor ({ _id, setModal}) {
+
+export function PickColor ({ _id, setModal}: PickColorProps) {
 
     const { updateTask } = useFetchAPI()
 

@@ -3,7 +3,8 @@ import { Container } from "./styles"
 
 type ChildrenProps = {
     children: ReactNode
-    props: string
+    type: "submit"
+    $width: boolean
 }
 
 export function Button ({children, ...props}: ChildrenProps) {

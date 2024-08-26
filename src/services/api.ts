@@ -31,7 +31,7 @@ export class APIService {
     }
 
     static async deleteTask(deleteTaskData: DeleteTask): Promise<void> {
-        await APIService.client.delete<UpdateTask>(
+        await APIService.client.delete<DeleteTask>(
             "/tasks", 
             {data: deleteTaskData}
         )

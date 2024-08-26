@@ -69,7 +69,7 @@ export function CreateNoteCard() {
                     {...register("text")}
                     >
                     </TextNote>
-                    <Button width="true" type="submit">Criar</Button>
+                    <Button $width={true} type="submit">Criar</Button>
             </Container>
     )
 }

@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { MagnifyingGlass } from '@phosphor-icons/react'
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
+import { Task } from '../../services/api-types'
 
-export function Header ({ setFilteredTask }) {
+type HeaderProps = {
+    setFilteredTask: (data: Task[]) => void
+}
+
+export function Header ({ setFilteredTask }: HeaderProps) {
     const [ inputValue, setInputValue ] = useState<string>()
 
     const { tasks } = useFetchAPI()

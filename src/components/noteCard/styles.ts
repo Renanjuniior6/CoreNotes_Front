@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import { theme } from '../../styles/theme'
 
+type EditProps = {
+    $edit: boolean
+}
+
+type ModalProps = {
+    $modal: boolean
+}
+
 export const Container = styled.form`
 background-color: ${(props) => props.color ? `${props.color}` : theme.colors.white};
 display: flex;
@@ -92,14 +100,14 @@ align-items: center;
 
 `
 
-export const CircleEdit = styled.div`
+export const CircleEdit = styled.div<EditProps>`
 width: 1.875rem;
 height: 1.875rem;
 padding: 0.3125rem;
 
-background-color: ${(props) => props.edit ? "none" : theme.colors.elipse13};
-opacity: ${(props) => props.edit ? "none" : "0.8"};
-border-radius: ${(props) => props.edit ? "none" : "1.25rem"};
+background-color: ${(props) => props.$edit ? "none" : theme.colors.elipse13};
+opacity: ${(props) => props.$edit ? "none" : "0.8"};
+border-radius: ${(props) => props.$edit ? "none" : "1.25rem"};
 
 &:hover {
     background-color: ${theme.colors.elipse13};
@@ -107,14 +115,14 @@ border-radius: ${(props) => props.edit ? "none" : "1.25rem"};
     border-radius: 1.25rem;
 }
 `
-export const CircleBucket = styled.div`
+export const CircleBucket = styled.div<ModalProps>`
 width: 1.875rem;
 height: 1.875rem;
 padding: 0.3125rem;
 
-background-color: ${(props) => props.modal ? theme.colors.elipse13 : "none"};
-opacity: ${(props) => props.modal ? "0.8" : "none"};
-border-radius: ${(props) => props.modal ? "1.25rem" : "none"};
+background-color: ${(props) => props.$modal ? theme.colors.elipse13 : "none"};
+opacity: ${(props) => props.$modal ? "0.8" : "none"};
+border-radius: ${(props) => props.$modal ? "1.25rem" : "none"};
 
 &:hover {
     background-color: ${theme.colors.elipse13};

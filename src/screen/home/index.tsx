@@ -4,21 +4,14 @@ import { NoteCard } from '../../components/noteCard'
 
 import { Content } from './styles'
 import { useEffect, useState } from 'react'
+import { Task } from '../../services/api-types'
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
 
-export type TasksProps = {
-    _id: string
-    title: string
-    color: string
-    favorite: boolean
-    text: string
-}
-
 export function Home () {
-    const [ noFavoritedTasks, setNoFavoritedTasks ] = useState<TasksProps[]>()
-    const [ favoriteTasks, setFavoriteTasks ] = useState<TasksProps[]>()
-    const [ filteredTask, setFilteredTask ] = useState<TasksProps[]>([])
+    const [ noFavoritedTasks, setNoFavoritedTasks ] = useState<Task[]>([])
+    const [ favoriteTasks, setFavoriteTasks ] = useState<Task[]>([])
+    const [ filteredTask, setFilteredTask ] = useState<Task[]>([])
 
     const { tasks, fetchTasks } = useFetchAPI()
 

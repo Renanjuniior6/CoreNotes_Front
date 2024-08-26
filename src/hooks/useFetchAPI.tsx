@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 
 import { createContext, useContext, useCallback, useState, ReactNode } from 'react'
 
@@ -12,7 +13,6 @@ interface FetchAPIProps {
     deleteTask: (data: DeleteTask) => Promise<void>
     fetchTasks: () => Promise<void>
     tasks: Task[]
-    setTasks: () => Promise<void>
 }
 
 const FetchAPIContext = createContext<FetchAPIProps>({} as FetchAPIProps)
@@ -46,7 +46,7 @@ export function FetchAPIProvider( { children }: FecthAPIProviderProps ) {
 
     return (
         <FetchAPIContext.Provider 
-        value={{fetchTasks, createTask, updateTask, deleteTask, tasks, setTasks }}>
+        value={{fetchTasks, createTask, updateTask, deleteTask, tasks }}>
             {children}
         </FetchAPIContext.Provider>
     )

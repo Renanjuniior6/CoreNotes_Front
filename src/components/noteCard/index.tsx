@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { Container, TitleInput, TextNote, IconsBox, BottomBox, ContainerIcons, Content, CircleEdit, CircleBucket } from "./styles";
 import { PickColor } from '../pickColor'
 import { PencilSimple, PaintBucket, X, Star } from '@phosphor-icons/react'
-import { TasksProps } from '../../screen/home';
 import { useForm } from 'react-hook-form'
 import { updateTaskSchema } from '../../validators/schemas';
 import { UpdateTaskData } from '../../validators/types';
@@ -10,9 +9,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '../button';
 
 import { useFetchAPI } from '../../hooks/useFetchAPI'
+import { Task } from '../../services/api-types';
 
-export function NoteCard ({ note }: TasksProps) {
-    const [ modal, setModal ] = useState(false)
+type NoteCardProps = {
+    note: Task
+}
+
+export function NoteCard ({ note }: NoteCardProps) {
+    const [ modal, setModal ] = useState<boolean>(false)
     const [ favorited, setFavorited ] = useState<boolean>()
     const [ edit, setEdit ] = useState<boolean>(true)
 
@@ -110,17 +114,17 @@ export function NoteCard ({ note }: TasksProps) {
                 </TextNote>
                 <ContainerIcons>
                     <IconsBox>
-                        <CircleEdit edit={edit}>
+                        <CircleEdit $edit={edit}>
                             <PencilSimple size={20} onClick={() => isEditing(false)} />
                         </CircleEdit>
-                        <CircleBucket modal={modal}>
+                        <CircleBucket $modal={modal}>
                             <PaintBucket size={20} onClick={() => isOpen(true)} />
                         </CircleBucket>
                     </IconsBox>
                     <X size={20} onClick={deleteNote}/>
                 </ContainerIcons>
             </BottomBox>
-            { edit === false && <Button type='submit'>Salvar</Button>}
+            { edit === false && <Button type="submit" >Salvar</Button>}
         </Container>
         { modal && <PickColor _id={_id} setModal={setModal} /> }
     </Content>
