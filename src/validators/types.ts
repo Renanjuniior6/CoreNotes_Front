@@ -1,6 +1,6 @@
-import { z } from 'zod'
+import { z } from "zod"
 
-import { createTaskSchema, updateTaskSchema } from './schemas'
+import { createTaskSchema, updateTaskSchema } from "./schemas"
 
 export type CreateTaskData = z.infer<typeof createTaskSchema>
 

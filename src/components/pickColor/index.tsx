@@ -1,40 +1,37 @@
-import { Container, ColorContent, Color } from "./styles";
-import { colors } from "../../styles/theme";
-
-import { useFetchAPI } from '../../hooks/useFetchAPI'
+/* eslint-disable react/react-in-jsx-scope */
+import { useFetchAPI } from "../../hooks/useFetchAPI"
+import { colors } from "../../styles/theme"
+import { Container, ColorContent, Color } from "./styles"
 
 type PickColorProps = {
   _id: string
   setModal: (data: boolean) => void
 }
 
+export function PickColor({ _id, setModal }: PickColorProps) {
+  const { updateTask } = useFetchAPI()
 
-export function PickColor ({ _id, setModal}: PickColorProps) {
+  function selectedColor(color: string) {
+    const data = { color, _id }
 
-    const { updateTask } = useFetchAPI()
+    updateTask(data)
 
-      function selectedColor (color: string) {
+    setModal(false)
+  }
 
-        const data = {color, _id}
-
-        updateTask(data)
-        
-        setModal(false)
-      }
-
-    return (
-        <Container>
-            <ColorContent>
-             {colors.map((item) => (
-                <Color 
-                key={item.id} 
-                color={item.color} 
-                onClick={() => {
-                    selectedColor(item.color)
-                }}
-               />
-              ))}
-            </ColorContent>
-        </Container>
-    )
+  return (
+    <Container>
+      <ColorContent>
+        {colors.map((item) => (
+          <Color
+            key={item.id}
+            color={item.color}
+            onClick={() => {
+              selectedColor(item.color)
+            }}
+          />
+        ))}
+      </ColorContent>
+    </Container>
+  )
 }

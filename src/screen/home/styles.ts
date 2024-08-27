@@ -1,11 +1,10 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Content = styled.div`
-margin-bottom: 3.125rem;
+  margin-bottom: 3.125rem;
 
-section {
+  section {
     display: flex;
     flex-wrap: wrap;
-}
-
+  }
 `
