@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { theme } from '../../styles/theme'
 
 type ContainerProps = {
-    $width: boolean
+    $width?: boolean
 }
 
 export const Container = styled.button<ContainerProps>`

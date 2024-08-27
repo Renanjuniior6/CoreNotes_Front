@@ -3,8 +3,8 @@ import { theme } from '../../styles/theme'
 
 export const Container = styled.div`
 background-color: ${theme.colors.white};
-width: 35.875rem;
-height: 2.875rem;
+width: 17.625rem;
+height: 5.8125rem;
 position: absolute;
 left: 10%;
 top: 100%;
@@ -20,6 +20,7 @@ align-items: center;
 justify-content: center;
 gap: 0.625rem;
 position: relative;
+flex-wrap: wrap;
 `
 
 export const Color = styled.li`

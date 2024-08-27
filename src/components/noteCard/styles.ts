@@ -105,14 +105,16 @@ width: 1.875rem;
 height: 1.875rem;
 padding: 0.3125rem;
 
-background-color: ${(props) => props.$edit ? "none" : theme.colors.elipse13};
+background-color: ${(props) => props.$edit ? "none" : theme.colors.white};
 opacity: ${(props) => props.$edit ? "none" : "0.8"};
 border-radius: ${(props) => props.$edit ? "none" : "1.25rem"};
+box-shadow: ${(props) => props.$edit ? "none" : "1px 1px 3px 0px #00000040"};
 
 &:hover {
-    background-color: ${theme.colors.elipse13};
+    background-color: ${theme.colors.white};
     opacity: 0.8;
     border-radius: 1.25rem;
+    box-shadow: 1px 1px 3px 0px #00000040;
 }
 `
 export const CircleBucket = styled.div<ModalProps>`
@@ -120,13 +122,15 @@ width: 1.875rem;
 height: 1.875rem;
 padding: 0.3125rem;
 
-background-color: ${(props) => props.$modal ? theme.colors.elipse13 : "none"};
+background-color: ${(props) => props.$modal ? theme.colors.white : "none"};
 opacity: ${(props) => props.$modal ? "0.8" : "none"};
 border-radius: ${(props) => props.$modal ? "1.25rem" : "none"};
+box-shadow: ${(props) => props.$modal ? "1px 1px 3px 0px #00000040" : "none"};
 
 &:hover {
-    background-color: ${theme.colors.elipse13};
+    background-color: ${theme.colors.white};
     opacity: 0.8;
     border-radius: 1.25rem;
+    box-shadow: 1px 1px 3px 0px #00000040;
 }
 `
