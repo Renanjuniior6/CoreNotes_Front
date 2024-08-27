@@ -10,7 +10,7 @@ import { useFetchAPI } from '../../hooks/useFetchAPI'
 
 export function Home () {
     const [ noFavoritedTasks, setNoFavoritedTasks ] = useState<Task[]>([])
-    const [ favoriteTasks, setFavoriteTasks ] = useState<Task[]>([])
+    const [ favoritedTasks, setFavoritedTasks ] = useState<Task[]>([])
     const [ filteredTask, setFilteredTask ] = useState<Task[]>([])
 
     const { tasks, fetchTasks } = useFetchAPI()
@@ -21,10 +21,10 @@ export function Home () {
             await fetchTasks()
 
             const favoriteNotes = tasks?.filter((item) => item.favorite === true)
-            const notes = tasks?.filter((item) => item.favorite === false)
+            const noFavoriteNotes = tasks?.filter((item) => item.favorite === false)
 
-            setNoFavoritedTasks(notes)
-            setFavoriteTasks(favoriteNotes)
+            setNoFavoritedTasks(noFavoriteNotes)
+            setFavoritedTasks(favoriteNotes)
         }
        getTasks()
       }, [fetchTasks, tasks])
@@ -37,7 +37,7 @@ export function Home () {
             <Content>
                 <section>
                   {filteredTask! && filteredTask?.length === 0 &&
-                       favoriteTasks && favoriteTasks.map((item) => (
+                       favoritedTasks && favoritedTasks.map((item) => (
                             <NoteCard key={item._id} note={item} /> 
                         ))}
                 </section>

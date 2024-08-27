@@ -13,7 +13,6 @@ import { toast } from 'react-toastify'
 import { useFetchAPI } from '../../hooks/useFetchAPI'
 
 export function CreateNoteCard() {
-    const [ fillFavorite, setFillFavorite ] = useState<string | undefined>()
     const [ favorite, setFavorite ] = useState<boolean>()
     const { createTask } = useFetchAPI()
 
@@ -30,18 +29,16 @@ export function CreateNoteCard() {
         }, resolver: zodResolver(createTaskSchema)
     })
 
-    function isActive(fill: string) {
+    function isFavorited(value: boolean) {
 
-        if (fill === fillFavorite) {
-            setFillFavorite("regular")
+        if (value === favorite) {
             setFavorite(false)
         } else {
-            setFillFavorite(fill)
             setFavorite(true)
         }
       }
 
-    const onSubmit = useCallback((data: CreateTaskData) => {
+    const createNote = useCallback((data: CreateTaskData) => {
 
         if(favorite) {
             data.favorite = favorite
@@ -55,14 +52,13 @@ export function CreateNoteCard() {
 
        toast.success("Nota adicionada!")
 
-    
     },[favorite, createTask, reset])
    
     return (
-            <Container onSubmit={handleSubmit(onSubmit)}>
+            <Container onSubmit={handleSubmit(createNote)}>
                 <span>
                     <TitleInput placeholder="Título" {...register("title")} />
-                    <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isActive("fill")} />
+                    <Star size={20} weight={favorite ? "fill" : "regular"} onClick={() => isFavorited(true)} />
                 </span>
                     <TextNote 
                     placeholder="Criar nota..." 

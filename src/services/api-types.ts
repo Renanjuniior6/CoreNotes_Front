@@ -14,7 +14,7 @@ export type CreateTask = {
 }
 
 export type UpdateTask = {
-    _id?: string
+    _id: string
     title?: string 
     color?: string
     favorite?: boolean

@@ -21,8 +21,6 @@ export function PickColor ({ _id, setModal}: PickColorProps) {
         
         setModal(false)
       }
- 
-
 
     return (
         <Container>

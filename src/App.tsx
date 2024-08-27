@@ -9,7 +9,7 @@ export function App() {
       <AppProvider>
         <Home />
         <GlobalStyles />
-        <ToastContainer autoClose={1500} theme="colored"/>
+        <ToastContainer autoClose={1500} theme="light"/>
       </AppProvider>
   )
 }

@@ -1,5 +1,4 @@
-export const theme =
- {
+export const theme = {
     colors: {
         primary: "#F0F2F5",
         white: "#FFFFFF",
@@ -21,8 +20,7 @@ export const theme =
     }
 }
 
-export const colors = 
-[
+export const colors = [
    {color: "#BAE2FF", id: 1},
    {color: "#B9FFDD", id: 2},
    {color: "#FFE8AC", id: 3},

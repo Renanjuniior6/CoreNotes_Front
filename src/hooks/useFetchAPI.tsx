@@ -35,7 +35,6 @@ export function FetchAPIProvider( { children }: FecthAPIProviderProps ) {
     }, [])
 
     const updateTask = useCallback( async (data: UpdateTask) => {
-
         await APIService.updateTask(data)
 
     }, [])

@@ -18,7 +18,7 @@ export function Header ({ setFilteredTask }: HeaderProps) {
   
     function fetchTasks () {
 
-        const findNote = tasks.filter((item) => item.title.toLowerCase() === inputValue?.toLowerCase())
+        const findNote = tasks?.filter((item) => item.title.toLowerCase() === inputValue?.toLowerCase())
 
         setFilteredTask(findNote)
 

@@ -34,39 +34,34 @@ export function NoteCard ({ note }: NoteCardProps) {
         }, resolver: zodResolver(updateTaskSchema)
     })
 
-     function isActive (fill: boolean) {
+     function isFavorited (value: boolean) {
 
-        if (fill === favorited) {
-
+        if (value === favorited) {
             setFavorited(false)
-
             const favorite = false
             
             updateTask({favorite, _id})
         } else {
             setFavorited(true)
-
             const favorite = true
 
             updateTask({favorite, _id})
         }
       }
 
-      function isEditing (edited: boolean) {
+      function isEditing (value: boolean) {
 
-        if (edited === edit) {
+        if (value === edit) {
             setEdit(true)
         } else {
             setEdit(false)
         }
       }
 
-      function isOpen (fill: boolean) {
+      function isOpen (value: boolean) {
 
-        if (fill === modal) {
-
+        if (value === modal) {
             setModal(false)
-
         } else {
             setModal(true)
 
@@ -103,7 +98,7 @@ export function NoteCard ({ note }: NoteCardProps) {
                 disabled={edit} 
                 color={note.color}>
                 </TitleInput>
-                <Star size={20} weight={favorited ? "fill" : "regular"} onClick={() => isActive(true) } />
+                <Star size={20} weight={favorited ? "fill" : "regular"} onClick={() => isFavorited(true) } />
             </span>
             <BottomBox>
                 <TextNote 
@@ -124,7 +119,7 @@ export function NoteCard ({ note }: NoteCardProps) {
                     <X size={20} onClick={deleteNote}/>
                 </ContainerIcons>
             </BottomBox>
-            { edit === false && <Button type="submit" >Salvar</Button>}
+            { edit === false && <Button type="submit" >Salvar</Button> }
         </Container>
         { modal && <PickColor _id={_id} setModal={setModal} /> }
     </Content>
