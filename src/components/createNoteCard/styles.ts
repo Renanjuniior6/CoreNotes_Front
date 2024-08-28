@@ -25,6 +25,7 @@ export const Container = styled.form`
 
   @media screen and (max-width: 600px) {
     width: 94%;
+    border-radius: 25px;
   }
 `
 
@@ -42,6 +43,12 @@ export const TitleInput = styled.input`
     font-weight: 700;
     font-size: 0.875rem;
     color: #333333;
+  }
+
+  @media screen and (max-width: 600px) {
+    border-top-left-radius: 25px;
+    padding-left: 0.9375rem;
+    width: 91%;
   }
 `
 
