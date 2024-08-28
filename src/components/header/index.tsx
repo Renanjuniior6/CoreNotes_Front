@@ -12,13 +12,13 @@ type HeaderProps = {
 }
 
 export function Header({ setFilteredTask }: HeaderProps) {
-  const [inputValue, setInputValue] = useState<string>()
+  const [inputValue, setInputValue] = useState<string | undefined>()
 
   const { tasks } = useFetchAPI()
 
   function fetchTasks() {
     const findNote = tasks?.filter(
-      (item) => item.title.toLowerCase() === inputValue?.toLowerCase(),
+      (item) => item.title.toLowerCase().includes(inputValue?.toLowerCase()!), // "!" estou afirmando que é uma string
     )
 
     setFilteredTask(findNote)
