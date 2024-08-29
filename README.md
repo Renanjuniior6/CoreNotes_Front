@@ -49,7 +49,7 @@ $ npm run dev
 
 ## ❗ Observações 
 - Este projeto para rodar corretamente na sua máquina será necessário fazer o clone e rodar o repositório da API
-- [Repositório da API](https://github.com/Renanjuniior6/Hotel.book-back_end)
+- [Repositório da API](https://github.com/Renanjuniior6/CoreNotes_API)
 - O projeto está usando as configurações do **Eslint + Prettier** para padronização do código
 
 ## 📁 Pastas do projeto
