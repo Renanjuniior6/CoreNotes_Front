@@ -24,6 +24,11 @@ Projeto fullstack que consiste em um To-do list funcional e responsivo para tela
 ![Captura de tela_29-8-2024_145724_localhost](https://github.com/user-attachments/assets/d3a30645-9d06-46da-bb5a-fb73081e65a1)
 
 ## ❓ Como rodar o projeto
+
+### Setup ambiente
+- [Node LTS](https://nodejs.org/pt)
+- [NPM ^9.x](https://docs.npmjs.com/cli/v10/commands/npm)
+  
 ```bash
 # Clone este respositório
 $ git clone [URL]
