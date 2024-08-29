@@ -8,7 +8,7 @@ Projeto fullstack que consiste em um To-do list funcional e responsivo para tela
 - [Como rodar o projeto](#-como-rodar-o-projeto)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Observações](#-observações)
-- [Entendendo as pastas do projeto](#-observações)
+- [Pastas do projeto](#-observações)
 - [Próximos Passos](#-próximos-passos)
 
 ## 🔧 Funcionalidades
@@ -20,8 +20,9 @@ Projeto fullstack que consiste em um To-do list funcional e responsivo para tela
   - ➡ Basta inserir o nome correspondente e apertar no ícone de lupa para a busca
 
  ## 💻 Layout 
-
  
+![Captura de tela_29-8-2024_145724_localhost](https://github.com/user-attachments/assets/d3a30645-9d06-46da-bb5a-fb73081e65a1)
+
 ## ❓ Como rodar o projeto
 ```bash
 # Clone este respositório
@@ -51,7 +52,7 @@ $ npm run dev
 - [Repositório da API](https://github.com/Renanjuniior6/Hotel.book-back_end)
 - O projeto está usando as configurações do **Eslint + Prettier** para padronização do código
 
-## 📁 Entendendo as pastas do projeto
+## 📁 Pastas do projeto
 -  `./src/screen` está localizada a página principal da aplicação
 -  `./src/services` está a comunicação com a API para trazer os dados
 -  `./src/styles` estão os estilos globais e os temas do projeto
