@@ -1,4 +1,4 @@
-# 🗂 Sobre o projeto CoreNotes
+# 🗂 Sobre o CoreNotes
 
 Projeto fullstack que consiste em um To-do list funcional e responsivo para telas menores
 
