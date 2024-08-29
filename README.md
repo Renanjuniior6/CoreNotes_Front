@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# 🗂 Sobre o projeto CoreNotes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto fullstack que consiste em um To-do list funcional e responsivo para telas menores
 
-Currently, two official plugins are available:
+## 📚 Índices
+- [Funcionalidades](#-funcionalidades)
+- [Layout](#-layout)
+- [Como rodar o projeto](#-como-rodar-o-projeto)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Observações](#-observações)
+- [Entendendo as pastas do projeto](#-observações)
+- [Próximos Passos](#-próximos-passos)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Funcionalidades
+- O usuário pode criar novas notas quando quiser e pode escolher favoritar ou não 
+  - ➡ Basta inserir o título e o conteúdo desejado para a criação da nova nota
+- O usuário pode editar suas notas como desejar  
+  - ➡ Pode ser alterado os campos de título, conteúdo, cor, favorito e deletar a nota
+- O usuário pode pesquisar pelas suas notas na barra de pesquisa  
+  - ➡ Basta inserir o nome correspondente e apertar no ícone de lupa para a busca
 
-## Expanding the ESLint configuration
+ ## 💻 Layout 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+ 
+## ❓ Como rodar o projeto
+```bash
+# Clone este respositório
+$ git clone [URL]
 
-- Configure the top-level `parserOptions` property like this:
+# Instale as dependências
+$ npm install
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Execute a aplicação
+$ npm run dev
+
+# A aplicação será iniciada na porta 5173, acesse pelo navegador: http://localhost:5173
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🌐 Tecnologias Utilizadas
+- [X] [React](https://pt-br.legacy.reactjs.org/)
+- [X] [Vite](https://vitejs.dev/)
+- [X] [Typescript](https://www.typescriptlang.org/)
+- [X] [Styled-Components](https://styled-components.com/)
+- [X] [React-Hook-Form](https://react-hook-form.com/)
+- [X] [React-Toastify](https://www.npmjs.com/package/react-toastify)
+- [X] [Axios](https://axios-http.com/docs/intro)
+- [X] [Zod](https://zod.dev/)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## ❗ Observações 
+- Este projeto para rodar corretamente na sua máquina será necessário fazer o clone e rodar o repositório da API
+- [Repositório da API](https://github.com/Renanjuniior6/Hotel.book-back_end)
+- O projeto está usando as configurações do **Eslint + Prettier** para padronização do código
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 📁 Entendendo as pastas do projeto
+-  `./src/screen` está localizada a página principal da aplicação
+-  `./src/services` está a comunicação com a API para trazer os dados
+-  `./src/styles` estão os estilos globais e os temas do projeto
+-  `./src/validators` estão os "schemas" e "types" para tipagem da aplicação
+-  `./src/hooks` estão os arquivos de controle do estado global com Context API
+-  `./src/components` estão os componentes do projeto
+-  `./App.tsx` está localizada o conteúdo a ser renderizado em toda a aplicação
+
+## ▶ Próximos passos
+- Hospedagem
+
