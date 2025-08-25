@@ -1,6 +1,6 @@
-# 🗂 Sobre o CoreNotes
+ <h1 align="center">🗂 CoreNotes</h1>
 
-Projeto fullstack que consiste em um To-do list funcional e responsivo para telas menores
+<p align="center">Projeto fullstack que consiste em um To-do list funcional e responsivo para telas menores</p>
 
 ## 📚 Índices
 - [Funcionalidades](#-funcionalidades)
